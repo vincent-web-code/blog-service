@@ -20,7 +20,7 @@ module.exports = (router, auth) => {
     router.get('/article', auth, async(req, res) => {
         let size = Number(req.query.size) || 10
         let page = Number(req.query.page) || 1
-        let list = await Article.find().limit(size).skip((page - 1) * size).exec();
+        let list = await Article.find().sort([['_id',-1]]).limit(size).skip((page - 1) * size).exec();
 
         let categroyList = await Category.find();
         let _list = JSON.parse(JSON.stringify(list));

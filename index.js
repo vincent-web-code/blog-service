@@ -11,10 +11,13 @@ app.use(express.json());
 const connect = require("./plugins/db");
 connect();
 
-// 创建路由
-const route = require("./routes/admin/index");
+// 创建后台路由
+const adminRoute = require("./routes/admin/index");
+adminRoute(app);
 
-route(app);
+// 创建前台路由
+const webRoute = require("./routes/web/index");
+webRoute(app);
 
 app.listen(3000, () => {
     console.log("http://localhost:3000")
