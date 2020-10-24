@@ -5,6 +5,7 @@ module.exports = (app) => {
     const router = express.Router();
 
     require('./article')(router);
+    require('./tags')(router);
     
     app.use('/web/api', router);
 
